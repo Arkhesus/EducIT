@@ -1,0 +1,43 @@
+<ion-app>
+  
+  <ion-menu side="start" menuId="menu" contentId="menu">
+    <ion-header>
+      <ion-toolbar color="warning">
+        <ion-title>Activites</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item  [routerLink]="['/home']">Accueil</ion-item>
+        <div *ngIf="state == 'accepted'">
+          <ion-item *ngFor="let category of course" [routerLink]="['/dashboard', class, category]">{{category}}</ion-item>
+          <ion-item *ngIf="type == 'prof'" [routerLink]="['/manage-access']">Gestion des accès</ion-item>
+        </div>
+        
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  
+
+  <ion-menu side="end" menuId="profile" contentId="profile">
+    <ion-header>
+      <ion-toolbar color="warning">
+        <ion-title>Personnal data</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item (click)=Disconnect()>Disconnect <ion-icon slot="end" name="log-out"></ion-icon></ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-router-outlet id = "menu"></ion-router-outlet>
+  <ion-router-outlet id = "profile"></ion-router-outlet>
+
+</ion-app>

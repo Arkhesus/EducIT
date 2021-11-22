@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "educit": {
+      "hosting": {
+        "app": [
+          "educit"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "educit"
+  }
+}

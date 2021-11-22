@@ -1,0 +1,79 @@
+<ion-toolbar color="warning">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-menu-button menu="profile"><ion-icon name="person-circle"></ion-icon></ion-menu-button>
+    </ion-button>
+    
+  </ion-buttons>
+
+  <ion-buttons slot = start>
+    <ion-menu-button menu="menu"></ion-menu-button>
+  </ion-buttons>
+
+      
+
+  <ion-title>Gestion des accès</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Accepter vos élèves dans votre classe</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let user of toAccept">
+        <ion-item >
+          <ion-label >{{user.name}} {{user.surname}}</ion-label>
+          <ion-button id={{user.mail}} slot="end" color="warning" (click) = "Accept(user)">Lier <ion-icon slot="end" name="create"></ion-icon></ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Créer de nouvelles classes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+
+      
+    <ion-item *ngFor="let prof of resultArr">
+      <ion-label>
+        <ion-note style="font-weight: bold" (click)="Choosen(prof)">
+          {{prof.name}}  {{prof.surname}}
+        </ion-note>
+      </ion-label>
+    </ion-item>
+
+    
+    <ion-chip *ngIf="selectedName != '' ">
+      <ion-label>{{selectedName}} {{selectedSurname}}</ion-label>
+      <ion-icon name="close" (click) = search()></ion-icon>
+    </ion-chip>
+
+    <ion-input slot="end" type="text" placeholder="Donnez le numéro de classe" [(ngModel)]="Newclass"></ion-input>
+
+    <ion-button expand=full color="warning" (click)=addClass()>Ajouter</ion-button>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Ajouter des nouvelles rubriques de cours
+      </ion-card-title>
+      <ion-card-content>
+        <ion-input type=text placeholder="Inscriver le nom du cours" [(ngModel)]="newRubriks"></ion-input>
+        <ion-button expand=full color="warning" (click)="addRubriks()">Ajouter</ion-button>
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

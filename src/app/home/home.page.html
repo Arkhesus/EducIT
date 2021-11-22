@@ -1,0 +1,24 @@
+
+  <ion-toolbar color="warning">
+    <ion-buttons slot="secondary">
+      <ion-button>
+        
+        <ion-menu-button menu="profile"><ion-icon name="person-circle"></ion-icon></ion-menu-button>
+      </ion-button>
+      
+    </ion-buttons>
+
+    <ion-buttons slot = start>
+      <ion-menu-button menu="menu"></ion-menu-button>
+    </ion-buttons>
+
+        
+
+    <ion-title>Accueil</ion-title>
+
+    
+  </ion-toolbar>
+
+  <ion-content>
+    <ion-title *ngIf="state == 'created'"> Votre compte est en attente d'acceptation</ion-title>
+  </ion-content>

@@ -1,0 +1,34 @@
+<div style="padding-left: 20px;">
+  <h1>Créez votre propore QCM</h1>
+  <h3>Notez vos questions, vos réponses et cochez la/les réponse(s) correcte(s)</h3>
+  <ion-item style="padding-top:20px;width: 300px;">
+      <ion-label position="floating">Donnez un nom à votre QCM</ion-label>
+      <ion-input type="text" [(ngModel)]="QCM.name" style='width : 200px;'></ion-input>
+  </ion-item>
+  <ion-item style="padding-top:20px;" *ngIf="QCM.name != ''">
+    <h3>{{QCM.name}}</h3>
+    <ion-button slot="end" color="warning" (click) = "addNewQuestion()" >Ajouter une question<ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-item>
+<div>
+  <ion-item *ngFor="let number of QCM.questions; index as i; trackBy:customTrackBy ">
+    <ion-list style="width : 100%; padding-right : 50px">
+      <ion-item >
+        <ion-label position="floating">Question {{i+1}}</ion-label>
+        <ion-input type="text" [(ngModel)]="QCM.questions[i]" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"># de réponses</ion-label>
+        <ion-input type="number" (change)=AddTextAnswer(i,$event.target.value)></ion-input>
+      </ion-item>
+
+      <ion-item *ngFor="let answer of QCM.answers[i].Listanswer; index as iAnswer; trackBy:customTrackBy" style="width : 50%; padding-left:35px;">
+        <ion-label position="floating">Inscrivez votre réponse n° {{iAnswer +1}}</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="QCM.answersBool[i].ListanswerBool[iAnswer]"></ion-checkbox>
+        <ion-input type="text" [(ngModel)]="QCM.answers[i].Listanswer[iAnswer]"></ion-input>
+      </ion-item>
+
+    </ion-list> 
+  </ion-item>
+
+  <ion-button color = "warning" (click)="Submit()" *ngIf="QCM.NbrQst > 0">Valider</ion-button>
+</div>

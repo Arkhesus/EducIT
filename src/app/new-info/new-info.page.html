@@ -1,0 +1,42 @@
+<ion-header>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <ion-toolbar color = "warning">
+    <ion-title style="text-align : center"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div class ="box">
+
+  <img src="https://firebasestorage.googleapis.com/v0/b/educit.appspot.com/o/Logo.PNG?alt=media&token=b9e8e976-9428-4da7-9513-93dc49046c6a" alt="Logo educIT" style="display : flex; text-align : center; margin : auto ;margin-top : 80px;">
+  <div style='width:350px; margin : auto;'>
+
+
+      
+    <ion-item>
+      <ion-input type="text" style="width : 5%;" placeholder = "Nom" [(ngModel)]="name"></ion-input>
+    </ion-item>
+  
+    <ion-item >
+      <ion-input type="text" placeholder = "Prénom" [(ngModel)]="surname"></ion-input>
+    </ion-item>
+
+    <div class="input-group mb-3" style="padding-top: 20px;" *ngIf="type == 'student'">
+      <label class="input-group-text" for="category">Classe</label>
+      <select [(ngModel)]="ChoosenClass" class="form-select" id="category">
+              <option *ngFor="let class of classes" value="{{class.class}}">{{class.class}} - {{class.profName}} {{class.profSurname}}</option>   
+      </select>
+  </div>
+  
+
+
+  
+    <div style=" text-align: center; padding : 20px;">
+      <ion-button class="boutonConnect" color="warning" style="display : inline-block; padding-right : 20px" (click)=Update()>Valider</ion-button>
+  </div>
+  </div>
+
+<ion-content>
+
+</ion-content>

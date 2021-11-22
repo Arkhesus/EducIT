@@ -1,0 +1,48 @@
+
+<div style="padding-left: 20px;">
+  <h1>Créez votre propore jeu de regroupement par catégorie</h1>
+  <h3>Choisissez votre nombre de catégories et créez les</h3>
+  <ion-item style="padding-top:20px;width: 300px;">
+      <ion-label position="floating" >Donnez un nom à votre jeu</ion-label>
+      <ion-input type="text" [(ngModel)]="GameGroups.name" style='width : 200px;'></ion-input>
+  </ion-item>
+  <ion-item style="padding-top:20px;" *ngIf="GameGroups.name != '' && 5 > GameGroups.categories.length">
+    <h3>{{GameGroups.name}}</h3>
+    <ion-button slot="end" color="warning" (click) = "addNewCategory()" >Ajouter une catégorie<ion-icon name="add-circle-outline"></ion-icon></ion-button>
+  </ion-item>
+
+  <ion-item *ngFor="let cat of GameGroups.categories; index as i; trackBy:customTrackBy ">
+    <ion-label position="floating" >Nommez la catégorie n° {{i+1}}</ion-label>
+    <ion-input type="text" [(ngModel)]="GameGroups.categories[i]" style='width : 200px;'></ion-input>    
+  </ion-item>
+
+  <ion-item *ngIf="GameGroups.categories.length != 0">
+
+    <ion-list>
+      <h3 style="padding-top: 20px;">Rajoutez vos réponses en les liant à la bonne catégorie</h3>
+      <ion-button slot="end" color="warning" (click) = "addNewAnswer()" >Ajouter une réponse<ion-icon name="add-circle-outline"></ion-icon></ion-button>
+      
+      <div *ngFor="let cat of GameGroups.answers; index as iAnswer; trackBy:customTrackBy ">
+
+      <ion-item style='width : 250px; display: inline-block;'>
+          <ion-label position="floating" >Nommez la réponse n° {{iAnswer+1}}</ion-label>
+          <ion-input type="text" [(ngModel)]="GameGroups.answers[iAnswer]" ></ion-input>  
+      </ion-item>  
+      <ion-item style='display: inline-block; width : fit-content;'>
+          <div class="input-group mb-3" style="padding-top: 20px;padding-left: 20px; ">
+            <label class="input-group-text" for="category">Catégories</label>
+            <select [(ngModel)]="GameGroups.answersCategories[iAnswer]" class="form-select">
+              <option *ngFor="let cat of GameGroups.categories">{{cat}}</option>     
+            </select>
+          </div>
+        </ion-item>
+
+      </div>
+    
+    </ion-list>
+
+  </ion-item>
+
+  <ion-button color = "warning" (click)="Submit()" *ngIf="GameGroups.answers.length > GameGroups.categories.length">Valider</ion-button>
+
+</div>

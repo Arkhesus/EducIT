@@ -1,0 +1,33 @@
+  <div *ngIf="GameQCM">
+  
+  <ion-card *ngIf="GameQCM.NbrQst > indexQCM">
+
+    <ion-card-header>
+      <ion-card-title>{{GameQCM.questions[indexQCM]}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-card id={{iAnswer}} *ngFor="let answer of GameQCM.answers[indexQCM].Listanswer; index as iAnswer;" style= "padding-left: 10px;" (click) = "CorrectQCM(iAnswer)">
+        <ion-title >{{iAnswer+1 }}.  {{answer}}</ion-title>
+      </ion-card>
+
+      <ion-button slot='end' color =warning (click)="nextQuestion()" *ngIf="showNext">Continuer</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="GameQCM.NbrQst == indexQCM">
+
+    <ion-card-header>
+      <ion-card-title>Vous avez fini de participer au jeu</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-label *ngIf="QttyError == 0"> Félécitations tu as eu tout juste</ion-label>
+      <ion-label *ngIf="QttyError != 0 ">Tu as fais {{QttyError + GameQCM.NbrQst}} tentative(s) pour {{GameQCM.NbrQst}} questions. Entraîne toi encore un peu pour progresser.</ion-label>
+    </ion-card-content>
+
+  </ion-card>
+
+</div>

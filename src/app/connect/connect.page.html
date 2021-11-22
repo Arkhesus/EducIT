@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color = "warning">
+    <ion-title style="text-align : center"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div class ="box">
+
+  <img src="https://firebasestorage.googleapis.com/v0/b/educit.appspot.com/o/Logo.PNG?alt=media&token=b9e8e976-9428-4da7-9513-93dc49046c6a" alt="Logo educIT" style="display : flex; text-align : center; margin : auto ;margin-top : 80px;">
+
+  
+  <div style='width:350px; margin : auto;'>
+
+  <ion-segment color=warning [(ngModel)]="type" style="padding: 20px;;">
+    <ion-segment-button value="prof">
+      <ion-label>Professeur</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="student">
+      <ion-label>Élèves</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+    
+  <ion-item>
+    <ion-input type="text" style="width : 5%;" placeholder = "Email" [(ngModel)]="mail"></ion-input>
+  </ion-item>
+
+  <ion-item >
+    <ion-input type="password" placeholder = "Mot de passe" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+
+
+  <div style=" text-align: center; padding : 20px;">
+    <ion-button class="boutonConnect" color="warning" style="display : inline-block; padding-right : 20px" (click)="CreateUser()">Inscription</ion-button>
+    <ion-button class="boutonConnect" color="warning" style="display : inline-block; padding-left : 20px;" (click)="ConnectUser()">Connexion</ion-button>
+</div>
+</div>
+
+</div>
+</ion-content>

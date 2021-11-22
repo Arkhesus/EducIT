@@ -1,0 +1,63 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<ion-toolbar color="warning">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-menu-button menu="profile"><ion-icon name="person-circle"></ion-icon></ion-menu-button>
+    </ion-button>
+    
+  </ion-buttons>
+
+  <ion-buttons slot = start>
+    <ion-menu-button menu="menu"></ion-menu-button>
+  </ion-buttons>
+
+      
+
+  <ion-title>Nouveau jeu</ion-title>
+</ion-toolbar>
+
+<ion-content>
+
+  <div class="input-group mb-3" style="padding-top: 20px;padding-left: 20px; width : fit-content">
+    <label class="input-group-text" for="category">Type de jeu</label>
+    <select [(ngModel)]="game" class="form-select">
+      <option value="QCM">QCM</option> 
+      <option value="Ordre">Classer par paire</option>    
+      <option value="Groups">Regroupement</option>    
+      <option value="Ordre">Classement sur axe</option>    
+      <option value="Ordre">Ordre simple</option>    
+      <option value="Ordre">Cartes avec réponses à écrire</option>    
+      <option value="Ordre">Placement sur image</option>    
+      <option value="Ordre">Texte à trous</option>    
+      <option value="Ordre">Puzzle de classement</option>    
+      <option value="Crossword">Mots croisés</option>    
+      <option value="Ordre">Mots mélés</option>    
+      <option value="Ordre">Pendu</option>    
+      <option value="Ordre">Mémory</option>    
+      <option value="Ordre">Grille de correspondance</option>    
+      <option value="Ordre">Remplir un tableau</option>    
+    </select>
+</div>
+
+<div *ngIf="game == 'QCM'" style="padding-left: 20px;">
+  <app-new-qcm
+  [class] = 'class'
+  [course] = 'course'
+  ></app-new-qcm>
+</div>
+
+<div *ngIf="game == 'Groups'" style="padding-left: 20px;">
+  <app-new-groups
+  [class] = 'class'
+  [course] = 'course'
+  ></app-new-groups>
+</div>
+
+<div *ngIf="game == 'Crossword'">
+  <app-new-crossword></app-new-crossword>
+</div>
+
+
+
+
+</ion-content>

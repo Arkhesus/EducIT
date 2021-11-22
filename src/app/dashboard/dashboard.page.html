@@ -1,0 +1,65 @@
+<ion-toolbar color="warning">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-menu-button menu="profile"><ion-icon name="person-circle"></ion-icon></ion-menu-button>
+    </ion-button>
+    
+  </ion-buttons>
+
+  <ion-buttons slot = start>
+    <ion-menu-button menu="menu"></ion-menu-button>
+  </ion-buttons>
+
+      
+
+  <ion-title>Dashboard de {{course}} - {{class}}</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+
+  <ion-card *ngIf="type == 'prof'">
+    <ion-card-header>
+      <ion-card-title> Gestion de la rubrique</ion-card-title>
+    </ion-card-header>
+
+  <ion-card style = "width : fit-content; display : inline-block;">
+    <ion-card-header>
+      <ion-card-title> Créez de nouveaux jeux</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand=full color="warning" [routerLink]="['/new-game', class, course]">Ajouter</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style = "width : fit-content; display : inline-block;">
+    <ion-card-header>
+      <ion-card-title> Accéder aux résultats d'un jeu</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand=full color="warning">Accéder</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-card>
+
+<ion-card>
+
+  <ion-card-header>
+    <ion-card-title> Accès aux activités de la rubrique</ion-card-title>
+  </ion-card-header>
+
+
+  <ion-card *ngFor="let game of ListGame" style='width : fit-content; padding : 20px'>
+    <ion-card-header>
+      <ion-card-title>
+        {{game.name}}
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-button expand=full color="warning" [routerLink]="['/play-game', class, course, game.name]">Jouer</ion-button>
+  </ion-card>
+
+</ion-card>
+
+</ion-content>

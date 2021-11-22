@@ -1,0 +1,33 @@
+<ion-content [scrollY] = 'contentScrollActive' >
+
+  <div slot="fixed" class='fixed-box' *ngIf="!finished">
+
+
+    <div class="drop-area" *ngFor="let zone of dropzone"  #dropzone>
+      <b>{{zone}}</b>
+    </div>
+
+  </div>
+
+  <div class="item-group" style="text-align : center;">
+    <ion-card *ngFor="let answer of GameGroups.answers" #itemGame style="width : fit-content; padding : 20px; display : inline-block">
+      <ion-card-title>{{answer}}</ion-card-title>
+    </ion-card>
+  </div>
+
+  <ion-card *ngIf="finished">
+
+    <ion-card-header>
+      <ion-card-title>Vous avez fini de participer au jeu</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-label *ngIf="QttyError == 0"> Félécitations tu as eu tout juste</ion-label>
+      <ion-label *ngIf="QttyError != 0 ">Tu as fais {{QttyError + GameGroups.answers.length}} tentative(s) pour {{GameGroups.answers.length}} questions. Entraîne toi encore un peu pour progresser.</ion-label>
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+</ion-content>

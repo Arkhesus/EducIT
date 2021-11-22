@@ -1,0 +1,33 @@
+<ion-toolbar color="warning">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-menu-button menu="profile"><ion-icon name="person-circle"></ion-icon></ion-menu-button>
+    </ion-button>
+    
+  </ion-buttons>
+
+  <ion-buttons slot = start>
+    <ion-menu-button menu="menu"></ion-menu-button>
+  </ion-buttons>
+
+      
+
+  <ion-title>Jouer à {{gameName}}</ion-title>
+</ion-toolbar>
+
+<ion-content *ngIf="GameQCM">
+  <app-play-qcm
+  [class] = 'class'
+  [course] = 'course'
+  [gameName] = 'gameName'
+  [GameQCM] = 'GameQCM'
+  [AnswersQCM] = 'AnswersQCM'
+  [indexQCM] = 'indexQCM'></app-play-qcm>
+</ion-content>
+
+
+
+<ion-content *ngIf="GameGroups" >
+  <app-play-groups
+  [GameGroups] = 'GameGroups'></app-play-groups>
+</ion-content>
