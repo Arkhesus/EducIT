@@ -54,7 +54,10 @@
 </div>
 
 <div *ngIf="game == 'Crossword'">
-  <app-new-crossword></app-new-crossword>
+  <app-new-crossword
+  [class] = 'class'
+  [course] = 'course'
+  ></app-new-crossword>
 </div>
 
 

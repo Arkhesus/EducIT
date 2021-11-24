@@ -1,16 +1,57 @@
-<html>
+<!-- <html>
   <head>
     <title>Crossword Puzzle Generator</title>
   </head>
   <body>
-    <main>
-      <h3>Crossword Puzzle Generator</h3>
+      <h3>Crossword Puzzle Generator</h3> -->
 
-      <div id="startButton"> 
-      	<button class="button" type="button" onclick="createCrossWordPuzzle()">Generate Crossword Puzzle</button>
+
+
+
+
+<div style="padding-left: 20px;">
+  <h1>Créez votre propore mot croisé</h1>
+  <h3>Notez vos mots ainsi que les indices s'y reliant</h3>
+  <ion-item style="padding-top:20px;width: 300px;">
+      <ion-label position="floating">Donnez un nom à votre mot croisé</ion-label>
+      <ion-input type="text" style='width : 200px;' [(ngModel)]="Crossword.name"></ion-input>
+  </ion-item>
+  <ion-item style="padding-top:20px;" *ngIf="Crossword.name != '' ">
+    <h3>{{Crossword.name}}</h3>
+    <ion-button slot="end" color="warning" (click) = "addNewWord()" >Ajouter un mot<ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-item>
+<div>
+</div>
+
+
+    <div class="container" style="margin : 10px;">
+
+    
+      <div class="center crossword" id="crossword"></div><br/>
+
+      <div class="center">
+    
+        <div class="line" >
+          <ion-item *ngFor="let word of Crossword.word; index as i; trackBy:customTrackBy ">
+            <ion-list style="width : 100%; padding-right : 50px">
+              <ion-item >
+                <ion-label position="floating">Mot</ion-label>
+                <ion-input class="word" type="text" [(ngModel)]="Crossword.word[i].word" ></ion-input>
+              </ion-item>
+
+              <ion-item >
+                <ion-label position="floating">Indice</ion-label>
+                <ion-input class="clue" type="text" [(ngModel)]="Crossword.word[i].clue" ></ion-input>
+              </ion-item>
+          </ion-list>
+      </ion-item>
+
+      <ion-button class="btn" id="btnCreate" (click)="Create()" color="warning" *ngIf="Crossword.NbrWord > 2">Générer</ion-button>
+      <ion-button class="btn" id="btnCreate" (click)="Submit()" color="warning" *ngIf="created">Sauvegarder le mot croisé</ion-button>
+        </div>
+
+        
+    
       </div>
-	  <div id="grid" class="grid"></div>
-    </main>   
-
-  </body>
-</html>
+    </div>
+    
