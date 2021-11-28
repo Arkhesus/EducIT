@@ -1,0 +1,57 @@
+
+
+
+
+<ion-content>
+  <div  *ngIf="filledIn != total">
+  <div class='center'>
+      <ion-card class="center" *ngIf="GameGapText.displayWord" style="padding : 10px;">
+        <ion-card-title >Liste des mots à remplir</ion-card-title>
+        <ion-card-content style = "display:inline-flex;">
+          <ion-card *ngFor="let item of RandomWords">
+            <ion-card-header>{{item}}</ion-card-header>
+          </ion-card>
+      </ion-card-content>
+      <ion-card-content>
+
+        <ion-chip outline style="color : #6bd793; border-color : #6bd793">
+          <ion-label>Correct</ion-label>
+        </ion-chip>
+
+        <ion-chip outline style="color : #f67828; border-color : #f67828">
+          <ion-label>Le mot est mal placé</ion-label>
+        </ion-chip>
+
+        <ion-chip outline style="color : #ff6961; border-color : #ff6961">
+          <ion-label>Erreur</ion-label>
+        </ion-chip>
+
+      </ion-card-content>
+
+
+
+  
+      </ion-card>
+  </div>
+</div>
+
+  <ion-card id="output">
+    <ion-card-content>
+      <ion-label id="output" style = "padding : 20px; margin-top : 20px"></ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card id="result" *ngIf="filledIn == total">
+    <ion-card-header>
+      <ion-card-title>Vous avez fini de participer au jeu</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content >
+      <ion-label *ngIf="QttyError == 0"> Félécitations tu as eu tout juste</ion-label>
+      <ion-label *ngIf="QttyError != 0 ">Tu as fais {{QttyError}} erreur(s). Entraîne toi encore un peu pour progresser.</ion-label>
+    </ion-card-content>
+  
+  </ion-card>
+</ion-content>
+
+

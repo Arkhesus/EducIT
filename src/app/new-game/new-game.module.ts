@@ -9,6 +9,7 @@ import { NewGamePageRoutingModule } from './new-game-routing.module';
 import { NewQCMComponent } from '../new-qcm/new-qcm.component';
 import { NewGroupsComponent } from '../new-groups/new-groups.component';
 import { NewCrosswordComponent } from '../new-crossword/new-crossword.component';
+import { NewGapTextComponent } from '../new-gap-text/new-gap-text.component';
 
 import { NewGamePage } from './new-game.page';
 
@@ -24,7 +25,8 @@ import { NewGamePage } from './new-game.page';
     NewGamePage,
     NewQCMComponent,
     NewGroupsComponent,
-    NewCrosswordComponent
+    NewCrosswordComponent,
+    NewGapTextComponent
   ]
 })
 export class NewGamePageModule {}

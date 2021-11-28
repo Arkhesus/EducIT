@@ -1,3 +1,29 @@
-<p>
-  play-crossword works!
-</p>
+
+    <div class="container" style="margin : 10px;">
+  <div class="center crossword" id="crossword"></div><br/>
+
+  <div class= "center" id="Gameclues">
+      <h1>Horizontal</h1>
+          <div *ngFor="let word of GameCrossword.word; index as i" >
+            <ion-item *ngIf="word.direction == 1">{{i +1}}. {{word.clue}}</ion-item>
+          </div>
+      <h1>Vertical</h1>
+      <div *ngFor="let word of GameCrossword.word; index as i" >
+        <ion-item *ngIf="word.direction == 0">{{i +1}}. {{word.clue}}</ion-item>
+      </div>
+
+    
+  </div>
+</div>
+
+<ion-card id="result" hidden>
+  <ion-card-header>
+    <ion-card-title>Vous avez fini de participer au jeu</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content >
+    <ion-label *ngIf="QttyError == 0"> Félécitations tu as eu tout juste</ion-label>
+    <ion-label *ngIf="QttyError != 0 ">Tu as fais {{QttyError}} erreur(s). Entraîne toi encore un peu pour progresser.</ion-label>
+  </ion-card-content>
+
+</ion-card>

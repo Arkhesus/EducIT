@@ -9,6 +9,8 @@ import { PlayGamePage } from './play-game.page';
 
 import { PlayQCMComponent } from '../play-qcm/play-qcm.component';
 import { PlayGroupsComponent } from '../play-groups/play-groups.component';
+import { PlayCrosswordComponent } from '../play-crossword/play-crossword.component'
+import { PlayGapTextComponent } from '../play-gap-text/play-gap-text.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { PlayGroupsComponent } from '../play-groups/play-groups.component';
   declarations: [
     PlayGamePage,
     PlayQCMComponent,
-    PlayGroupsComponent
+    PlayGroupsComponent,
+    PlayCrosswordComponent,
+    PlayGapTextComponent
   ]
 })
 export class PlayGamePageModule {}

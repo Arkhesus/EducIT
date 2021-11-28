@@ -28,7 +28,7 @@
       <option value="Ordre">Ordre simple</option>    
       <option value="Ordre">Cartes avec réponses à écrire</option>    
       <option value="Ordre">Placement sur image</option>    
-      <option value="Ordre">Texte à trous</option>    
+      <option value="GapText">Texte à trous</option>    
       <option value="Ordre">Puzzle de classement</option>    
       <option value="Crossword">Mots croisés</option>    
       <option value="Ordre">Mots mélés</option>    
@@ -58,6 +58,13 @@
   [class] = 'class'
   [course] = 'course'
   ></app-new-crossword>
+</div>
+
+<div *ngIf="game == 'GapText'">
+  <app-new-gap-text
+  [class] = 'class'
+  [course] = 'course'
+  ></app-new-gap-text>
 </div>
 
 

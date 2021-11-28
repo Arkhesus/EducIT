@@ -31,3 +31,14 @@
   <app-play-groups
   [GameGroups] = 'GameGroups'></app-play-groups>
 </ion-content>
+
+
+<ion-content *ngIf="GameCrossword" >
+  <app-play-crossword
+  [GameCrossword] = 'GameCrossword'></app-play-crossword>
+</ion-content>
+
+<ion-content *ngIf="GameGapText" >
+  <app-play-gap-text
+  [GameGapText] = 'GameGapText'></app-play-gap-text>
+</ion-content>

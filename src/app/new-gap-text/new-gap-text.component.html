@@ -1,0 +1,31 @@
+<div style="padding-left: 20px;">
+  <h1>Créez votre propore text à trous</h1>
+  <h3>Créez votre texte tout en y ajoutant au fur et à mesure vos mots à remplir</h3>
+  <ion-item style="padding-top:20px;width: 300px;">
+      <ion-label position="floating">Donnez un nom à votre text à trou</ion-label>
+      <ion-input type="text" style='width : 200px;' [(ngModel)]="GapText.name"></ion-input>
+  </ion-item>
+
+  <ion-item style="padding-top:20px;" *ngIf="GapText.name != '' ">
+    <h3>{{GapText.name}}</h3>
+    <ion-item slot="end">
+      <ion-label>Afficher les propositions au joueur</ion-label>
+      <ion-toggle [(ngModel)]="GapText.displayWord" color="warning"></ion-toggle>
+    </ion-item>
+    <ion-button slot="end" color="warning" (click) = "addGapWord()" >Ajouter un mot<ion-icon name="add-circle-outline"></ion-icon></ion-button>
+  </ion-item>
+<div>
+</div>
+
+<ion-item >
+  <!-- <ion-button slot="end" color="warning" (click) = "addGapWord()" >Ajouter un mot à trous<ion-icon name="add-circle-outline"></ion-icon></ion-button> -->
+  <ion-label  position="floating">Texte</ion-label>
+  <ion-textarea id="input" class="word" type="text" [(ngModel)]="GapText.text" (ionChange)="UpdateOutput()" ></ion-textarea>
+</ion-item>
+<ion-label id="output"></ion-label>
+
+<div>
+<ion-button class="btn center" id="btnCreate" (click)="Submit()" color="warning" *ngIf="GapText.words.length > 0">Sauvegarder le texte à trous</ion-button>
+</div>
+
+

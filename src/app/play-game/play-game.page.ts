@@ -29,6 +29,34 @@ interface Groups {
   answersCategories : string[];
 }
 
+//Crossword interface
+interface Crossword {
+  name : string;
+  NbrWord : number;
+  word : Word[];
+  board : LineBoard[]
+}
+
+interface LineBoard {
+  ListLine : string[]
+}
+
+interface Word {
+  word : string,
+  direction : number,
+  x: number,
+  y : number,
+  clue : string,
+}
+
+interface GapText {
+  name : "",
+  words : Array<string>,
+  displayWord : boolean,
+  text : string,
+}
+
+
 @Component({
   selector: 'app-play-game',
   templateUrl: './play-game.page.html',
@@ -47,7 +75,13 @@ export class PlayGamePage implements OnInit {
   indexQCM : number;
 
   // Groups data
-  GameGroups : Groups
+  GameGroups : Groups;
+
+  //Crossword data
+  GameCrossword : Crossword;
+
+  //GapText data
+  GameGapText : GapText
 
   constructor(private gestCtrl : GestureController, private changedetectorRef: ChangeDetectorRef ,private activatedRouter: ActivatedRoute, public firestore: AngularFirestore) { }
 
@@ -88,6 +122,28 @@ export class PlayGamePage implements OnInit {
             answersCategories : childData.payload.doc.data()['answersCategories']
           }
         }
+
+        if(childData.payload.doc.data()['type'] == "Crossword"){
+          this.GameCrossword = {
+            name : childData.payload.doc.data()['name'],
+            NbrWord : childData.payload.doc.data()['NbrWord'],
+            word : childData.payload.doc.data()['word'],
+            board : childData.payload.doc.data()['board']
+          }
+
+          console.log(this.GameCrossword)
+        }
+
+        if(childData.payload.doc.data()['type'] == "GapText"){
+          this.GameGapText = {
+            name : childData.payload.doc.data()['name'],
+            words : childData.payload.doc.data()['words'],
+            displayWord : childData.payload.doc.data()['displayWord'],
+            text : childData.payload.doc.data()['text']
+          }
+
+          console.log(this.GameGapText)
+        }
         
       })
     })
@@ -95,6 +151,7 @@ export class PlayGamePage implements OnInit {
 
 
   }
+  
 
 
 // ------------------------------------
